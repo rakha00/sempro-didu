@@ -7,6 +7,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+Route::get('/products', function () {
+    return view('products');
+});
+
+Route::get('/order-list', function () {
+    return view('order-list');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
