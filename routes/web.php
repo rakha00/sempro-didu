@@ -8,21 +8,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('adminojan');
-})->middleware('admin')->name('admin');
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', function () {
+        return view('admin');
+    });
 
+    Route::get('/products', function () {
+        return view('products');
+    });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
-Route::get('/products', function () {
-    return view('products');
-});
-
-Route::get('/order-list', function () {
-    return view('order-list');
+    Route::get('/order-list', function () {
+        return view('order-list');
+    });
 });
 
 
