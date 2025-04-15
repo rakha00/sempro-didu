@@ -39,9 +39,35 @@
                     <h1 class="text-xl font-semibold text-black">All Products</h1>
                     <p class="text-sm text-gray-600">Home &gt; All Products</p>
                 </div>
-                <button class="bg-[#1D1D1D] text-white px-4 py-2 rounded-md text-sm hover:bg-black">
-                    ➕ ADD NEW PRODUCT
-                </button>
+                <!-- You can open the modal using ID.showModal() method -->
+                <button class="btn" onclick="my_modal_3.showModal()">➕ ADD NEW PRODUCT</button>
+                <dialog id="my_modal_3" class="modal">
+                    <div class="modal-box bg-[#003B4A]">
+                        <form method="dialog">
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <div>
+                            <h2 class="text-3xl font-bold my-3">Add Product</h2>
+                            <hr>
+                        </div>
+                        <form action="">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Choose image</legend>
+                                <input type="file"
+                                    class="file-input bg-white file:bg-white file:text-black w-full" />
+                                <legend class="fieldset-legend">Name</legend>
+                                <input type="text" class="input bg-white w-full" placeholder="Your Name here" />
+                                <legend class="fieldset-legend">Description</legend>
+                                <textarea class="textarea h-24 bg-white w-full" placeholder="Your Description here"></textarea>
+                                <legend class="fieldset-legend">Price</legend>
+                                <input type="number" class="input bg-white w-full" placeholder="Your Price here" />
+                                <legend class="fieldset-legend">Stock</legend>
+                                <input type="number" class="input bg-white w-full" placeholder="stock" />
+                            </fieldset>
+                            <button class="btn btn-outline my-5" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </dialog>
             </div>
 
             <!-- Product Grid -->
