@@ -56,13 +56,15 @@
                                 <input type="file"
                                     class="file-input bg-white file:bg-white file:text-black w-full" />
                                 <legend class="fieldset-legend">Name</legend>
-                                <input type="text" class="input bg-white w-full" placeholder="Your Name here" />
+                                <input type="text" class="input bg-white w-full text-black"
+                                    placeholder="Your Name here" />
                                 <legend class="fieldset-legend">Description</legend>
-                                <textarea class="textarea h-24 bg-white w-full" placeholder="Your Description here"></textarea>
+                                <textarea class="textarea h-24 bg-white w-full text-black" placeholder="Your Description here"></textarea>
                                 <legend class="fieldset-legend">Price</legend>
-                                <input type="number" class="input bg-white w-full" placeholder="Your Price here" />
+                                <input type="number" class="input bg-white w-full text-black"
+                                    placeholder="Your Price here" />
                                 <legend class="fieldset-legend">Stock</legend>
-                                <input type="number" class="input bg-white w-full" placeholder="stock" />
+                                <input type="number" class="input bg-white w-full text-black" placeholder="stock" />
                             </fieldset>
                             <button class="btn btn-outline my-5" type="submit">Submit</button>
                         </form>
