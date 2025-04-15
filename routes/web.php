@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,13 +13,13 @@ Route::middleware('admin')->group(function () {
         return view('admin');
     })->name('admin');
 
-    Route::get('/products', function () {
-        return view('products');
-    });
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
     Route::get('/order-list', function () {
         return view('order-list');
     });
+
+    Route::post('/create/product', [ProductController::class, 'store'])->name('products.store');
 });
 
 

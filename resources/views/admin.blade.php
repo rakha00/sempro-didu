@@ -23,7 +23,8 @@
                 <a href="#" class="flex items-center rounded-md bg-[#003B4A] px-4 py-2 text-white">
                     <span class="mr-3">📊</span> DASHBOARD
                 </a>
-                <a href="/products" class="flex items-center rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200">
+                <a href="{{ route('products.index') }}"
+                    class="flex items-center rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200">
                     <span class="mr-3">📦</span> ALL PRODUCTS
                 </a>
                 <a href="/order-list" class="flex items-center rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200">
