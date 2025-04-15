@@ -11,7 +11,7 @@ Route::get('/', function () {
 Route::middleware('admin')->group(function () {
     Route::get('/admin', function () {
         return view('admin');
-    });
+    })->name('admin');
 
     Route::get('/products', function () {
         return view('products');
