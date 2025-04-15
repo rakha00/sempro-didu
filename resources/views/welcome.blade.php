@@ -33,23 +33,30 @@
             </div>
             <a class="btn btn-ghost text-xl">daisyUI</a>
         </div>
-        <div class="navbar-end ">
+        <div class="navbar-end">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
-                        <a href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-xs text-sm leading-normal">
-                            Dashboard
-                        </a>
+                        @if (Auth::user()->role === 'admin')
+                            <a href="{{ route('dashboard') }}"
+                                class="rounded-xs inline-block border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:hover:border-[#62605b]">
+                                Dashboard
+                            </a>
+                        @else
+                            <a href="{{ route('dashboard') }}"
+                                class="rounded-xs inline-block border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:hover:border-[#62605b]">
+                                Home
+                            </a>
+                        @endif
                     @else
                         <a href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 rounded-2xl bg-white text-black border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] text-sm leading-normal">
+                            class="inline-block rounded-2xl border border-transparent bg-white px-5 py-1.5 text-sm leading-normal text-black hover:border-[#19140035] dark:hover:border-[#3E3E3A]">
                             Log in
                         </a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 border-white hover:border-[#1915014a] border text-white rounded-2xl text-sm leading-normal">
+                                class="inline-block rounded-2xl border border-white px-5 py-1.5 text-sm leading-normal text-white hover:border-[#1915014a]">
                                 Register
                             </a>
                         @endif
@@ -60,7 +67,7 @@
     </div>
     <div class="hero min-h-screen bg-white">
         <div class="hero-content text-center">
-            <div class="text-black font-poppins">
+            <div class="font-poppins text-black">
                 <h1 class="text-8xl font-bold text-[#2563EA]">GRAND MORTAR</h1>
                 <p class="py-6 text-3xl">
                     Kami percaya bahwa fondasi yang kuat dimulai dari pilihan material yang tepat — dan kami siap jadi
@@ -70,7 +77,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer sm:footer-horizontal footer-center bg-[#2563EA]  text-base-content p-4">
+    <footer class="footer sm:footer-horizontal footer-center text-base-content bg-[#2563EA] p-4">
         <aside>
             <p>Copyright ©2025 - All right reserved by GRAND MORTAR</p>
         </aside>
