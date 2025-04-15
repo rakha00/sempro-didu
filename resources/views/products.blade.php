@@ -54,7 +54,7 @@
                             <fieldset class="fieldset">
                                 <legend class="fieldset-legend">Choose image</legend>
                                 <input type="file"
-                                    class="file-input bg-white file:bg-white file:text-black w-full" />
+                                    class="file-input bg-white file:bg-white file:text-black w-full text-black" />
                                 <legend class="fieldset-legend">Name</legend>
                                 <input type="text" class="input bg-white w-full text-black"
                                     placeholder="Your Name here" />
