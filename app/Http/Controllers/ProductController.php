@@ -20,14 +20,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -76,7 +68,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
@@ -84,7 +76,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255|unique:products,name',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('products.index')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $image = $request->image->store('images', 'public');
+        $slug = Str::slug($request->name);
+        $validated = $validator->validated();
+
+        Product::where('id', $id)->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'image' => $image,
+            'price' => $validated['price'],
+            'stock' => $validated['stock'],
+            'slug' => $slug,
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
 
     /**
@@ -92,6 +112,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Product::where('id', $id)->delete();
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
 }
