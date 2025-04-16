@@ -93,67 +93,18 @@
             <!-- Product Grid -->
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Product Card -->
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="text-sm text-gray-600">XXXX<br>XXXXXXX</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
-
-                <!-- Copy for multiple products -->
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="font-medium text-black">Lorem Ipsum</p>
-                    <p class="text-sm text-gray-500">Battery</p>
-                    <p class="mt-1 text-sm font-bold text-black">₹110.40</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="font-medium text-black">Lorem Ipsum</p>
-                    <p class="text-sm text-gray-500">Battery</p>
-                    <p class="mt-1 text-sm font-bold text-black">₹110.40</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="font-medium text-black">Lorem Ipsum</p>
-                    <p class="text-sm text-gray-500">Battery</p>
-                    <p class="mt-1 text-sm font-bold text-black">₹110.40</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="font-medium text-black">Lorem Ipsum</p>
-                    <p class="text-sm text-gray-500">Battery</p>
-                    <p class="mt-1 text-sm font-bold text-black">₹110.40</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
-
-                <div class="relative rounded-lg bg-white p-4 shadow">
-                    <div class="absolute right-3 top-3 text-gray-500">⋮</div>
-                    <img src="{{ asset('assets/dummy-products.jpg') }}" alt="Product"
-                        class="mx-auto mb-3 h-32 w-full rounded object-cover">
-                    <p class="font-medium text-black">Lorem Ipsum</p>
-                    <p class="text-sm text-gray-500">Battery</p>
-                    <p class="mt-1 text-sm font-bold text-black">₹110.40</p>
-                    <p class="mt-2 font-medium text-black">NAME ITEM</p>
-                    <p class="text-xs text-gray-500">XXXXXXXX</p>
-                </div>
+                @foreach ($products as $product)
+                    <div class="relative rounded-lg bg-white p-4 shadow">
+                        <div class="absolute right-3 top-3 text-gray-500">⋮</div>
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="Product"
+                            class="mx-auto mb-3 h-32 w-full rounded object-cover">
+                        <p class="mt-2 text-xl font-medium text-black">{{ $product->name }}</p>
+                        <p class="text-lg text-gray-500">{{ $product->description }}</p>
+                        <p class="text-sm text-gray-600">Stock: {{ $product->stock }}</p>
+                        <p class="mt-2 text-sm font-bold text-black">
+                            Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                    </div>
+                @endforeach
             </div>
         </main>
     </div>
