@@ -8,6 +8,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', action: function () {
+    return view('home');
+});
+
+Route::get('/about', action: function () {
+    return view('about');
+});
+
+Route::get('/product-user', action: function () {
+    return view('product-user');
+});
+
+Route::get('/contact', action: function () {
+    return view('contact');
+});
+
 Route::middleware('admin')->group(function () {
     Route::get('/admin', function () {
         return view('admin');
