@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <a href="/" class="text-5xl font-bold text-[#2563EA]">GRAND MORTAR</a>
+    <a href="/" class=""><img src="{{ asset('assets/logo.jpg') }}" alt="" class="w-32 object-cover"></a>
     <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         <form method="POST" action="{{ route('register') }}">
             @csrf
