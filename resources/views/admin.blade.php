@@ -65,7 +65,7 @@
             </div>
 
             <!-- Stats Cards -->
-            <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Total Orders -->
                 <div class="rounded-lg bg-white p-4 shadow">
                     <div class="flex items-center justify-between">
@@ -74,9 +74,11 @@
                     </div>
                     <div class="mt-4 text-gray-700">
                         <p class="text-sm">Total Orders</p>
-                        <p class="text-2xl font-semibold">XXXX</p>
-                        <p class="text-sm text-green-500">↑ XXXX</p>
-                        <p class="text-xs">XXXX</p>
+                        <p class="text-2xl font-semibold">{{ $orders->count() }}</p>
+                        <p class="text-sm text-green-500">↑ {{ $orders->count() }}</p>
+                        <p class="text-xs">Total Revenue:
+                            Rp{{ $orders->sum(fn($order) => $order->quantity * $order->product->price) }}
+                        </p>
                     </div>
                 </div>
 
@@ -88,9 +90,9 @@
                     </div>
                     <div class="mt-4 text-gray-700">
                         <p class="text-sm">Active Orders</p>
-                        <p class="text-2xl font-semibold">XXXX</p>
-                        <p class="text-sm text-green-500">↑ XXXX</p>
-                        <p class="text-xs">XXXX</p>
+                        <p class="text-2xl font-semibold">{{ $orders->where('status', 'active')->count() }}</p>
+                        <p class="text-sm text-green-500">↑ {{ $orders->where('status', 'active')->count() }}</p>
+                        <p class="text-xs">{{ $orders->where('status', 'active')->count() }}</p>
                     </div>
                 </div>
 
@@ -102,13 +104,13 @@
                     </div>
                     <div class="mt-4 text-gray-700">
                         <p class="text-sm">Completed Orders</p>
-                        <p class="text-2xl font-semibold">XXXXX</p>
-                        <p class="text-sm text-green-500">↑ XXXXX</p>
-                        <p class="text-xs">XXXXX</p>
+                        <p class="text-2xl font-semibold">{{ $orders->where('status', 'completed')->count() }}</p>
+                        <p class="text-sm text-green-500">↑ {{ $orders->where('status', 'completed')->count() }}</p>
+                        <p class="text-xs">{{ $orders->where('status', 'completed')->count() }}</p>
                     </div>
                 </div>
 
-                <!-- Return Orders -->
+                {{-- <!-- Return Orders -->
                 <div class="rounded-lg bg-white p-4 shadow">
                     <div class="flex items-center justify-between">
                         <div class="rounded-full bg-[#003B4A] p-2 text-white">↩️</div>
@@ -116,11 +118,11 @@
                     </div>
                     <div class="mt-4 text-gray-700">
                         <p class="text-sm">Return Orders</p>
-                        <p class="text-2xl font-semibold">XXXXX</p>
-                        <p class="text-sm text-green-500">↑ XXXX</p>
-                        <p class="text-xs">XXXXX</p>
+                        <p class="text-2xl font-semibold">{{ $orders->where('status', 'return')->count() }}</p>
+                        <p class="text-sm text-green-500">↑ {{ $orders->where('status', 'return')->count() }}</p>
+                        <p class="text-xs">{{ $orders->where('status', 'return')->count() }}</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Sales Graph -->

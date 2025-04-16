@@ -54,6 +54,7 @@
                             </th>
                             <th>Product</th>
                             <th>Order ID</th>
+                            <th>Quantity</th>
                             <th>Date</th>
                             <th>Customer Name</th>
                             <th>Status</th>
@@ -79,10 +80,11 @@
                                     {{ $order->id }}
                                     <br />
                                 </td>
+                                <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->created_at->format('Y-m-d H:i') }}</td>
                                 <td>{{ $order->user->name }}</td>
                                 <td>{{ $order->status }}</td>
-                                <td>Rp{{ number_format($order->product->price, 0, ',', '.') }}</td>
+                                <td>Rp{{ number_format($order->product->price * $order->quantity, 0, ',', '.') }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
 
-        Product::factory(10)->create();
+        $this->call([
+            ProductSeeder::class,
+        ]);
     }
 }

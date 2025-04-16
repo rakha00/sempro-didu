@@ -26,7 +26,7 @@
             <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
         </div>
     </div>
-    <div class="h-screen bg-white">
+    <div class="h-full bg-white">
         <div class="font-poppins flex h-[35%] w-full items-center pb-20 pl-10 pt-32 text-black">
             <h1 class="text-8xl font-bold text-[#2563EA]">This is our product</h1>
         </div>

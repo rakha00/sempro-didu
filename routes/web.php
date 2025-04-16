@@ -11,11 +11,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('admin')->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
-
-
+    Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/order-list', [OrderController::class, 'index'])->name('order.index');
 
