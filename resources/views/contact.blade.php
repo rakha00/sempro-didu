@@ -10,9 +10,9 @@
 </head>
 
 <body class="font-poppins">
-    <div class="navbar bg-[#2563EA] shadow-sm fixed">
+    <div class="navbar fixed bg-[#2563EA] shadow-sm">
         <div class="navbar-start">
-            <a class="text-xl font-semibold ml-2" href="#">GRAND MORTAR</a>
+            <a class="ml-2 text-xl font-semibold" href="#">GRAND MORTAR</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -25,12 +25,12 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="mr-2" href="">Hi, Fauzan</a>
+            <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
         </div>
     </div>
     <div class="hero min-h-screen" style="background-image: url('{{ asset('assets/bg-contact.jpg') }}');">
         <div class="hero-overlay"></div>
-        <div class="hero-content text-neutral-content text-center flex flex-col">
+        <div class="hero-content text-neutral-content flex flex-col text-center">
             <h1 class="text-4xl text-white">Got a project in mind and need the right materials to
                 make it happen? Our team is ready to assist you with the best cement solutions and dependable
                 service. Click below and let’s start building something great together.</h1>

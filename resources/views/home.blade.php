@@ -8,9 +8,9 @@
 </head>
 
 <body class="font-poppins">
-    <div class="navbar bg-[#2563EA] shadow-sm fixed z-50">
+    <div class="navbar fixed z-50 bg-[#2563EA] shadow-sm">
         <div class="navbar-start">
-            <a class="text-xl font-semibold ml-2" href="#">GRAND MORTAR</a>
+            <a class="ml-2 text-xl font-semibold" href="#">GRAND MORTAR</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -23,13 +23,13 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="mr-2" href="">Hi, Fauzan</a>
+            <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
         </div>
     </div>
     <div class="hero min-h-screen bg-white">
         <div class="hero-content text-center">
             <div class="font-poppins text-black">
-                <h1 class="text-8xl font-bold text-[#2563EA]">Hi, Felda Fauzan</h1>
+                <h1 class="text-8xl font-bold text-[#2563EA]">Hi, {{ Auth::user()->name }}</h1>
                 <p class="py-6 text-3xl">
                     We are here to provide high-quality cement with fast and reliable service to support every
                     construction project you undertake.

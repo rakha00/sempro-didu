@@ -8,9 +8,9 @@
 </head>
 
 <body class="font-poppins overflow-x-hidden">
-    <div class="navbar bg-[#2563EA] shadow-sm fixed z-50">
+    <div class="navbar fixed z-50 bg-[#2563EA] shadow-sm">
         <div class="navbar-start">
-            <a class="text-xl font-semibold ml-2" href="#">GRAND MORTAR</a>
+            <a class="ml-2 text-xl font-semibold" href="#">GRAND MORTAR</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -23,179 +23,53 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="mr-2" href="">Hi, Fauzan</a>
+            <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
         </div>
     </div>
-    <div class="bg-white">
-        <div class="font-poppins text-black pt-32 pb-20 h-[35%] w-full flex items-center pl-10">
+    <div class="h-screen bg-white">
+        <div class="font-poppins flex h-[35%] w-full items-center pb-20 pl-10 pt-32 text-black">
             <h1 class="text-8xl font-bold text-[#2563EA]">This is our product</h1>
         </div>
         <div>
-            <div class="grid grid-cols-3 place-items-center gap-y-5 pb-5 container mx-auto">
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/logo.jpg') }}" class="object-cover h-full" />
-                    </figure>
+            <div class="container mx-auto grid grid-cols-3 place-items-center gap-y-5 pb-5">
+                @foreach ($products as $product)
+                    <div class="card bg-base-100 w-96 shadow-sm">
+                        <figure
+                            class="flex h-48 w-full items-center justify-center overflow-hidden rounded-t-lg bg-gray-100">
+                            <img src="{{ asset('storage/' . $product->image) }}" class="h-full object-cover" />
+                        </figure>
 
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
+                        <div class="card-body">
+                            <h2 class="card-title">{{ $product->name }}</h2>
+                            <p class="text-green-400">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                            <p>{{ $product->description }}</p>
 
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
+                            <div class="card-actions flex items-center justify-between">
+
+                                <!-- Quantity selector -->
+                                <div class="flex items-center gap-2">
+                                    <form action="{{ route('order.store') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="status" value="pending">
+                                        <button type="button" onclick="decreaseQty(this)"
+                                            class="btn btn-sm btn-outline">-</button>
+                                        <input type="number"
+                                            class="input input-bordered input-sm qty-input w-14 text-center"
+                                            value="0" min="0" name="quantity">
+                                        <button type="button" onclick="increaseQty(this)"
+                                            class="btn btn-sm btn-outline">+</button>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Buy Now</button>
+                                </form>
                             </div>
-                            <button class="btn btn-primary">Buy Now</button>
+
+
                         </div>
-
-
                     </div>
-                </div>
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/dummy-products.jpg') }}" class="object-cover h-full" />
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
-
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
-                            </div>
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/1.jpg') }}" class="object-cover h-full" />
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
-
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
-                            </div>
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/2.jpg') }}" class="object-cover h-full" />
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
-
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
-                            </div>
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/3.webp') }}" class="object-cover h-full" />
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
-
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
-                            </div>
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card bg-base-100 w-96 shadow-sm">
-                    <figure
-                        class="h-48 w-full flex items-center justify-center overflow-hidden bg-gray-100 rounded-t-lg">
-                        <img src="{{ asset('assets/3.webp') }}" class="object-cover h-full" />
-                    </figure>
-
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p class="text-green-400">Rp15.000
-                        </p>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
-                        </p>
-
-                        <div class="card-actions flex justify-between items-center">
-                            <!-- Quantity selector -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decreaseQty(this)" class="btn btn-sm btn-outline">-</button>
-                                <input type="number" class="input input-bordered input-sm w-14 text-center qty-input"
-                                    value="0" min="0">
-                                <button onclick="increaseQty(this)" class="btn btn-sm btn-outline">+</button>
-                            </div>
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
         </div>
     </div>
