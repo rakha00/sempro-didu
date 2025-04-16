@@ -12,29 +12,29 @@
 
     <div class="flex">
         <!-- Sidebar -->
-        <aside class="w-64 bg-white min-h-screen shadow-lg">
-            <div class="p-6 border-b border-gray-200">
-                <div class="h-24 w-full bg-gray-100 border border-dashed flex items-center justify-center text-gray-400">
+        <aside class="min-h-screen w-64 bg-white shadow-lg">
+            <div class="border-b border-gray-200 p-6">
+                <div class="flex h-24 w-full items-center justify-center border border-dashed bg-gray-100 text-gray-400">
                     Logo
                 </div>
             </div>
             <nav class="mt-6 space-y-2 px-4">
-                <a href="/admin" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md">
+                <a href="/admin" class="flex items-center rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200">
                     <span class="mr-3">📊</span> DASHBOARD
                 </a>
-                <a href="/products" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md">
+                <a href="/products" class="flex items-center rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200">
                     <span class="mr-3">📝</span> ALL PRODUCT
                 </a>
-                <a href="#" class="flex items-center px-4 py-2 bg-[#003B4A] text-white rounded-md">
+                <a href="#" class="flex items-center rounded-md bg-[#003B4A] px-4 py-2 text-white">
                     <span class="mr-3">👜</span> ORDER LIST
                 </a>
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-6 bg-[#EEF0EA]">
+        <main class="flex-1 bg-[#EEF0EA] p-6">
             <!-- Top Bar -->
-            <div class="flex justify-between items-center mb-6">
+            <div class="mb-6 flex items-center justify-between">
                 <div>
                     <h1 class="text-xl font-semibold text-black">All Products</h1>
                     <p class="text-sm text-gray-600">Home &gt; All Products</p>
@@ -42,7 +42,7 @@
 
             </div>
 
-            <div class="overflow-x-auto bg-white rounded-md text-black">
+            <div class="overflow-x-auto rounded-md bg-white text-black">
                 <table class="table">
                     <!-- head -->
                     <thead>
@@ -61,102 +61,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- row 1 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox border-black" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <div class="">Hart Hagerty</div>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" class="checkbox border-black" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <div class="">{{ $order->product->name }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                            </td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-
-                        </tr>
-                        <!-- row 2 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox border-black" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <div class="">Hart Hagerty</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                            </td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-
-                        </tr>
-                        <!-- row 3 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox border-black" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <div class="">Hart Hagerty</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                            </td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-
-                        </tr>
-                        <!-- row 4 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox border-black" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="flex items-center gap-3">
-                                    <div>
-                                        <div class="">Hart Hagerty</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                            </td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-                            <td>Purple</td>
-
-                        </tr>
+                                </td>
+                                <td>
+                                    {{ $order->id }}
+                                    <br />
+                                </td>
+                                <td>{{ $order->created_at->format('Y-m-d H:i') }}</td>
+                                <td>{{ $order->user->name }}</td>
+                                <td>{{ $order->status }}</td>
+                                <td>Rp{{ number_format($order->product->price, 0, ',', '.') }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

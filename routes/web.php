@@ -15,11 +15,9 @@ Route::middleware('admin')->group(function () {
         return view('admin');
     })->name('admin');
 
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-    Route::get('/order-list', function () {
-        return view('order-list');
-    });
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/order-list', [OrderController::class, 'index'])->name('order.index');
 
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 });

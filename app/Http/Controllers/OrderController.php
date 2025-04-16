@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $orders = Order::orderBy("created_at", "desc")->paginate(10);
+        return view('order-list', compact('orders'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
