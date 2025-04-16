@@ -14,8 +14,8 @@
         <!-- Sidebar -->
         <aside class="min-h-screen w-64 bg-white shadow-lg">
             <div class="border-b border-gray-200 p-6">
-                <div class="flex h-24 w-full items-center justify-center border border-dashed bg-gray-100 text-gray-400">
-                    Logo
+                <div class="flex h-fit w-full items-center justify-center text-[#2563EA] text-2xl font-bold">
+                    GRAND MORTAR
                 </div>
             </div>
             <nav class="mt-6 space-y-2 px-4">
