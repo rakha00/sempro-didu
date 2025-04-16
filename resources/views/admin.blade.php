@@ -128,7 +128,7 @@
             <!-- Sales Graph -->
             <div class="rounded-lg bg-white p-6 shadow">
                 <div class="mb-4 flex items-center justify-between">
-                    <h2 class="text-lg font-semibold text-black">Sale Graph</h2>
+                    <h2 class="text-lg font-semibold text-black">Sales Graph</h2>
                     <div class="space-x-2">
                         <button
                             class="rounded-md border bg-white px-3 py-1 text-sm text-black hover:bg-gray-100">WEEKLY</button>
@@ -137,18 +137,36 @@
                             class="rounded-md border bg-white px-3 py-1 text-sm text-black hover:bg-gray-100">YEARLY</button>
                     </div>
                 </div>
-                <div class="flex h-40 items-end bg-gray-100">
-                    <div class="relative h-full w-full">
-                        <!-- Simulasi grafik -->
-                        <div class="left-1/6 absolute bottom-0 h-6 w-1 bg-blue-300"></div>
-                        <div class="left-2/6 absolute bottom-0 h-8 w-1 bg-blue-400"></div>
-                        <div class="left-3/6 absolute bottom-0 h-4 w-1 bg-blue-200"></div>
-                        <div class="left-4/6 absolute bottom-0 h-16 w-1 bg-blue-500"></div>
-                        <div class="left-5/6 absolute bottom-0 h-32 w-1 bg-blue-600"></div>
+                <div class="h-64 w-full bg-gray-100 p-4">
+                    <div class="flex h-full items-end justify-between">
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-20 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">JUL</span>
+                        </div>
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-28 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">AUG</span>
+                        </div>
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-16 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">SEP</span>
+                        </div>
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-36 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">OCT</span>
+                        </div>
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-32 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">NOV</span>
+                        </div>
+                        <div class="flex w-1/12 flex-col items-center">
+                            <div class="h-44 w-8 rounded-t-md bg-[#003B4A]"></div>
+                            <span class="mt-2 text-xs text-gray-500">DEC</span>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-2 flex justify-between text-sm text-gray-500">
-                    <span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+                    <span>0</span><span>20K</span><span>40K</span><span>60K</span><span>80K</span><span>100K</span>
                 </div>
             </div>
         </main>
