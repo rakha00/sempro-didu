@@ -99,7 +99,7 @@
                         <img src="{{ asset('storage/' . $product->image) }}" alt="Product"
                             class="mx-auto mb-3 h-32 w-full rounded object-cover">
                         <p class="mt-2 text-xl font-medium text-black">{{ $product->name }}</p>
-                        <p class="text-lg text-gray-500">{{ $product->description }}</p>
+                        <p class="text-sm text-gray-500">{{ $product->description }}</p>
                         <p class="text-sm text-gray-600">Stock: {{ $product->stock }}</p>
                         <p class="mt-2 text-sm font-bold text-black">
                             Rp{{ number_format($product->price, 0, ',', '.') }}</p>
