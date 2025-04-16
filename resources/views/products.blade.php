@@ -57,17 +57,32 @@
                                 <input type="file"
                                     class="file-input w-full bg-white text-black file:bg-white file:text-black"
                                     name="image" />
+                                @error('image')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <legend class="fieldset-legend">Name</legend>
-                                <input type="text" class="input w-full bg-white text-black"
-                                    placeholder="Your Name here" name="name" />
+                                <input type="text" class="input w-full bg-white text-black" placeholder="Name"
+                                    name="name" />
+                                @error('name')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <legend class="fieldset-legend">Description</legend>
-                                <textarea class="textarea h-24 w-full bg-white text-black" placeholder="Your Description here" name="description"></textarea>
+                                <textarea class="textarea h-24 w-full bg-white text-black" placeholder="Description" name="description"></textarea>
+                                @error('description')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <legend class="fieldset-legend">Price</legend>
-                                <input type="number" class="input w-full bg-white text-black"
-                                    placeholder="Your Price here" name="price" />
+                                <input type="number" class="input w-full bg-white text-black" placeholder="Price"
+                                    name="price" />
+                                @error('price')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <legend class="fieldset-legend">Stock</legend>
-                                <input type="number" class="input w-full bg-white text-black" placeholder="stock"
+                                <input type="number" class="input w-full bg-white text-black" placeholder="Stock"
                                     name="stock" />
+                                @error('stock')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                             </fieldset>
                             <button class="btn btn-outline my-5" type="submit">Submit</button>
                         </form>

@@ -19,7 +19,7 @@ Route::middleware('admin')->group(function () {
         return view('order-list');
     });
 
-    Route::post('/create/product', [ProductController::class, 'store'])->name('products.store');
+    Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 });
 
 

@@ -37,33 +37,30 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
-            // 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
-            // Store the photo in the public/images directory
-            $fileName = $request->file('image')->store('images', 'public');
-            // Add the photo file name to the validated data
-        }
-
-        $slug = Str::slug($request->name);
-
         if ($validator->fails()) {
-            return dd($validator->errors()->first());
+            return redirect()
+                ->route('products.index')
+                ->withErrors($validator)
+                ->withInput();
         }
 
+        $image = $request->image->store('images', 'public');
+        $slug = Str::slug($request->name);
         $validated = $validator->validated();
 
-        $product = Product::create([
+        Product::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
-            'image' => $fileName,
+            'image' => $image,
             'price' => $validated['price'],
             'stock' => $validated['stock'],
             'slug' => $slug,
         ]);
 
-        return dd($product);
+        return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
 
     /**
