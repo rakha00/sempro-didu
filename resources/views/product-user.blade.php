@@ -23,7 +23,22 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
+            <div class="dropdown dropdown-end dropdown-hover relative">
+                <button tabindex="0" class="rounded-md px-3 py-1 text-sm font-medium text-white shadow">Hi,
+                    {{ Auth::user()->name }}</button>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">Logout</a>
+                        </form>
+                    </li>
+                </ul>
+
+
+            </div>
         </div>
     </div>
     <div class="h-full bg-white">
