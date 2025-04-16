@@ -23,7 +23,22 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="mr-2" href="">Hi, {{ Auth::user()->name }}</a>
+            <div class="dropdown dropdown-end dropdown-hover relative">
+                <button tabindex="0" class="rounded-md px-3 py-1 text-sm font-medium text-white shadow">Hi,
+                    {{ Auth::user()->name }}</button>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">Logout</a>
+                        </form>
+                    </li>
+                </ul>
+
+
+            </div>
         </div>
     </div>
     <div class="hero min-h-screen bg-white">
@@ -55,7 +70,7 @@
                             class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="mb-2 text-xl font-semibold">Portland Cement</h3>
+                        <h3 class="mb-2 text-xl font-semibold text-black">Portland Cement</h3>
                         <p class="mb-4 text-gray-600">Our versatile Portland cement is perfect for general construction
                             needs.</p>
                         <a href="/product-user" class="font-medium text-[#2563EA] hover:underline">Learn more →</a>
@@ -68,7 +83,7 @@
                             class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="mb-2 text-xl font-semibold">Masonry Cement</h3>
+                        <h3 class="mb-2 text-xl font-semibold text-black">Masonry Cement</h3>
                         <p class="mb-4 text-gray-600">Specially formulated for brick and block work with superior
                             workability.</p>
                         <a href="/product-user" class="font-medium text-[#2563EA] hover:underline">Learn more →</a>
@@ -81,7 +96,7 @@
                             alt="Ready-Mix Concrete" class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="mb-2 text-xl font-semibold">Ready-Mix Concrete</h3>
+                        <h3 class="mb-2 text-xl font-semibold text-black">Ready-Mix Concrete</h3>
                         <p class="mb-4 text-gray-600">Time-saving solution delivered directly to your construction site.
                         </p>
                         <a href="/product-user" class="font-medium text-[#2563EA] hover:underline">Learn more →</a>
